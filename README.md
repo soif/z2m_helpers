@@ -1,6 +1,6 @@
 # Zigbee2Mqtt Helpers Scripts
 
-This project is a growing collection of scripts to simplify and enhance your experience with Zigbee2MQTT. Currently, we feature one script, `z2m_ota.sh`, with more Zigbee-related tools planned for the future. These scripts are free, open-source, and crafted with ❤️ by [soif](https://github.com/soif).
+This project is a collection of scripts to simplify and enhance your experience with Zigbee2MQTT. Currently, we feature one script, `z2m_ota.sh`, with maybe more Zigbee-related tools planned for the future. These scripts are free, open-source, and crafted with ❤️ by [soif](https://github.com/soif).
 
 
 ## z2m_ota.sh
@@ -21,16 +21,17 @@ The script monitors the device’s update state via MQTT and automatically retri
 
 ```text
 $ z2m_ota.sh --help
-z2m_ota.sh v1.0: Allows to force OTA updates for Zigbee devices when the adapter/network is crashing on OTA upgrades.
+z2m_ota.sh, version 1.00
+Allows to force OTA updates for Zigbee devices when the adapter/network is crashing during OTA upgrades.
 
-USAGE: z2m_ota.sh [-s host] [-u user] [-p password] [-t wait_time] [-h|--help] <TOPIC>
+USAGE  : z2m_ota.sh [-s host] [-u user] [-p password] [-t wait_time] [-h|--help] <TOPIC>
 Options:
-  -s host        MQTT Server host   (default: localhost)
-  -u user        MQTT username      (default: none) --> UNTESTED, PLEASE REPORT
-  -p password    MQTT password      (default: none) --> UNTESTED, PLEASE REPORT
+  <TOPIC>        MQTT topic (FriendlyName) of the device to be updated (REQUIRED)
+  -s host        MQTT Server              (default: localhost)
+  -u user        MQTT username            (default: none) --> UNTESTED, PLEASE REPORT
+  -p password    MQTT password            (default: none) --> UNTESTED, PLEASE REPORT
   -t wait_time   Seconds until next retry (default: 20 sec)
   -h, --help     Displays this help message and exit
-  TOPIC          MQTT topic for the device (REQUIRED)
 ```
 
 ### Dependencies

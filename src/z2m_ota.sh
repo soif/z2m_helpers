@@ -23,8 +23,9 @@ MQTT_PASS=''		    # MQTT password (default: empty)
 WAIT_TIME=20		    # default wait time in seconds between requesting an update (after failed)
 
 # Constants ##############################################################################
-VERSION="1.0"
-DESCRIPTION="$0 v$VERSION: Allows to force OTA updates for Zigbee devices when the adapter/network is crashing during OTA upgrades."
+VERSION="1.00"
+SCRIPT_NAME=$(basename "$0" 2>/dev/null || echo "z2m_ota.sh")
+SCRIPT_DESC="Allows to force OTA updates for Zigbee devices when the adapter/network is crashing during OTA upgrades."
 SPINNER=('-' '\\' '|' '/')	# spinner characters for wheel effect
 SPINNER_INDEX=0		        # current spinner index
 
@@ -140,21 +141,26 @@ CleanPrevLine() {
 }
 
 # Function to display usage
-usage() {
-    echo "$DESCRIPTION"
+EchoUsage() {
     echo ""
-    echo "USAGE: $0 [-s host] [-u user] [-p password] [-t wait_time] [-h|--help] <TOPIC>"
+    echo "USAGE  : $SCRIPT_NAME [-s host] [-u user] [-p password] [-t wait_time] [-h|--help] <TOPIC>"
     echo "Options:"
-    echo "  -s host        MQTT Server host	(default: $MQTT_HOST)"
-    echo "  -u user        MQTT username		(default: none) --> UNTESTED, PLEASE REPORT"
-    echo "  -p password    MQTT password		(default: none) --> UNTESTED, PLEASE REPORT"
-    echo "  -t wait_time   Seconds until next retry	(default: $WAIT_TIME sec)"
+    echo "  <TOPIC>        MQTT topic (FriendlyName) of the device to be updated (REQUIRED)"
+    echo "  -s host        MQTT Server              (default: $MQTT_HOST)"
+    echo "  -u user        MQTT username            (default: none) --> UNTESTED, PLEASE REPORT"
+    echo "  -p password    MQTT password            (default: none) --> UNTESTED, PLEASE REPORT"
+    echo "  -t wait_time   Seconds until next retry (default: $WAIT_TIME sec)"
     echo "  -h, --help     Displays this help message and exit"
-    echo "  TOPIC          MQTT topic for the device (REQUIRED)"
     echo ""
     exit 0
 }
 
+# Function to display help
+EchoHelp() {
+    echo "$SCRIPT_NAME, version $VERSION"
+    echo "$SCRIPT_DESC"
+    EchoUsage
+}
 
 # MAIN ###################################################################################
 
@@ -186,7 +192,7 @@ fi
 # Check for --help before getopts
 for arg in "$@"; do
     if [ "$arg" = "--help" ]; then
-        usage
+        EchoHelp
     fi
 done
 
@@ -211,15 +217,15 @@ while getopts ":s:t:u:p:h" opt; do
             MQTT_PASS="$OPTARG"
             ;;
         h)
-            usage
+            EchoHelp
             ;;
         \?)
             echo "Error: Invalid option: -$OPTARG"
-            usage
+            EchoUsage
             ;;
         :)
             echo "Error: Option -$OPTARG requires an argument"
-            usage
+            EchoUsage
             ;;
     esac
 done
@@ -230,7 +236,7 @@ shift $((OPTIND - 1))
 # Check if a topic argument is provided
 if [ -z "$1" ]; then
     echo "Error: Please provide a topic as an argument"
-    usage
+    EchoUsage
 fi
 
 # here we start ---------------------------------------------------------------------------
