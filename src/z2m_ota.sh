@@ -11,7 +11,7 @@
 # are responsible for any damages or issues that may arise from its use.         #
 #                                                                                #
 # For more details, contributions, or to report issues, visit the project at:    #
-# https://github.com/soif/z2m-scripts                                            #
+# https://github.com/soif/z2m_helpers/                                           #
 ##################################################################################
 
 
@@ -133,9 +133,9 @@ UpdateSpinner() {
     SPINNER_INDEX=$(( (SPINNER_INDEX + 1) % 4 ))
 }
 
-# Function to clean previous line
+# Function to clean previous line (quick and dirty: someone want to enhance it ?)
 CleanPrevLine() {
-    printf "\r                                                                           "
+    printf "\r                                                                                                                          "
     printf "\r"
 }
 
