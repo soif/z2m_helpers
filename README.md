@@ -1,9 +1,9 @@
 # Zigbee2Mqtt Helpers Scripts
 
-This project is a collection of scripts to simplify and enhance your experience with Zigbee2MQTT. Currently, we feature one script, `z2m_ota.sh`, with maybe more Zigbee-related tools planned for the future. These scripts are free, open-source, and crafted with ❤️ by [soif](https://github.com/soif).
+This project is a collection of scripts to simplify and enhance your experience with [Zigbee2mqtt](https://github.com/Koenkk/zigbee2mqtt). Currently, we feature one script, `z2m_ota.sh`, with maybe more Zigbee-related tools planned for the future. These scripts are free, open-source, and crafted with ❤️ by [soif](https://github.com/soif).
 
 
-## z2m_ota.sh
+## 🐝 z2m_ota.sh
 
 The `z2m_ota.sh` script is a handy workaround for automating Over-The-Air (OTA) updates for Zigbee devices in Zigbee2MQTT. It eliminates the need to manually restart failed updates through the GUI, which is especially useful when the Zigbee adapter or network crashes during updates.
 
