@@ -1,19 +1,11 @@
 #!/bin/bash
 
-##################################################################################
-# This script is provided free of charge for your use, with love and care by its #
-# author, soif (https://github.com/soif). It is designed to help force Over-The- #
-# Air (OTA) updates for Zigbee devices in Zigbee2MQTT, particularly when the     #
-# adapter or network encounters issues during updates.                           #
-#                                                                                #
-# Please note that this script is offered "as is," without any warranties or     #
-# guarantees. Use it at your own risk, and neither the author nor contributors   #
-# are responsible for any damages or issues that may arise from its use.         #
-#                                                                                #
-# For more details, contributions, or to report issues, visit the project at:    #
-# https://github.com/soif/z2m_helpers/                                           #
-##################################################################################
-
+##########################################################################################
+# z2m_ota.sh - Automates retries for Zigbee2MQTT OTA update failures.                    #
+# Author: soif (https://github.com/soif). Licensed under MIT (see LICENSE).              #
+# Project: https://github.com/soif/z2m_helpers                                           #
+# Use at your own risk, no warranties.                                                   #
+##########################################################################################
 
 
 # Defaults ###############################################################################
